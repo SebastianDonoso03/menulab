@@ -14,39 +14,39 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(value = "api/crear")
+@RequestMapping(value = "api/")
 public class CrearplatoController 
 {
     @Autowired
     private CrearplatoService crearplatoService;
 
-    @PostMapping(value = "crear")
+    @PostMapping(value = "crearplato")
     public Crearplato save(@RequestBody Crearplato entity) 
     {
         return crearplatoService.save(entity);
     }
     
-    @GetMapping(value = "crear{id}")
+    @GetMapping(value = "crearplato{id}")
     public Crearplato findById(@PathVariable Long id) 
     {
         return crearplatoService.findById(id);
     }
 
-     @PutMapping(value = "crear")
+     @PutMapping(value = "crearplato")
     public Crearplato update(@RequestBody Crearplato entity)
     {
         return crearplatoService.save(entity);
     }
 
     //Delete
-    @DeleteMapping(value = "crear")
+    @DeleteMapping(value = "crearplato")
     public void delete(@PathVariable Long id)
     {
         crearplatoService.deleteById(id);
     }
 
     //ALl
-    @GetMapping(value = "crear")
+    @GetMapping(value = "crearplato")
     public List<Crearplato> findAll()
     {
         return crearplatoService.findAll();

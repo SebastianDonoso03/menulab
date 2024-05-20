@@ -1,10 +1,14 @@
 package Menu.proyecto.crear_plato;
 
 
+import java.math.BigDecimal;
+
+import Menu.proyecto.reserva.Reserva;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Crearplato 
@@ -14,7 +18,14 @@ public class Crearplato
     private long id;
     private String nombre;
     private String descripcion;
-    private Number precio;
+    private BigDecimal precio;
+    
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
+    }
     public long getId() {
         return id;
     }
@@ -33,10 +44,7 @@ public class Crearplato
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    public Number getPrecio() {
-        return precio;
-    }
-    public void setPrecio(Number precio) {
-        this.precio = precio;
-    }
+
+    @ManyToOne
+    private Reserva reserva;
 }

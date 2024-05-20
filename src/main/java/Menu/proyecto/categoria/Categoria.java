@@ -1,9 +1,11 @@
 package Menu.proyecto.categoria;
 
+import Menu.proyecto.crear_plato.Crearplato;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Categoria 
@@ -25,4 +27,6 @@ public class Categoria
         this.nombrecat = nombrecat;
     }
 
+    @ManyToOne
+    private Crearplato crearplato;
 }

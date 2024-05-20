@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
-@RequestMapping(value = "api/reserva")
+@RequestMapping(value = "api/")
 public class ReservaController 
 {
     @Autowired

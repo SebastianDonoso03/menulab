@@ -13,10 +13,9 @@ public class Empleado
    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String nombrecompleto;
-    private String usuario;;
+    private String usuario;
     private String correoelectronico;
     private String contraseña;
-    private Boolean enable;
 
     
     public long getId() {
@@ -68,14 +67,5 @@ public class Empleado
         this.contraseña = contraseña;
     }
 
-
-    public Boolean getEnable() {
-        return enable;
-    }
-
-
-    public void setEnable(Boolean enable) {
-        this.enable = enable;
-    }
 
 }

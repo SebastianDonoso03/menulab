@@ -1,7 +1,10 @@
 package Menu.proyecto.reserva;
 
 
-import java.util.Date;
+import java.math.BigDecimal;
+import java.sql.Date;
+
+import Menu.proyecto.cliente.Cliente;
 import Menu.proyecto.restaurante.Restaurante;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,9 +20,19 @@ public class Reserva
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private Date fechaingreso;
-    private Number precio;
-    private Number numeropersonas;
+    private BigDecimal precio;
+    private BigDecimal numeropersonas;
     private String descripcion;
+
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;   
+    }
+
+
 
     public long getId() {
         return id;
@@ -37,19 +50,11 @@ public class Reserva
         this.fechaingreso = fechaingreso;
     }
 
-    public Number getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(Number precio) {
-        this.precio = precio;
-    }
-
     public Number getNumeropersonas() {
         return numeropersonas;
     }
 
-    public void setNumeropersonas(Number numeropersonas) {
+    public void setNumeropersonas(BigDecimal numeropersonas) {
         this.numeropersonas = numeropersonas;
     }
 
@@ -64,4 +69,7 @@ public class Reserva
 
     @ManyToOne 
     private Restaurante restaurante;
+
+    @ManyToOne
+    private Cliente cliente;
 }
