@@ -39,15 +39,14 @@ public class CrearplatoService
         {
             Crearplato crearplatoExistente = findById(id);
 
-            if (crearplatoExistente == null)
-            {
-                return ResponseEntity.notFound().build();
-            }
+            if (crearplatoExistente == null)return ResponseEntity.notFound().build();
 
-            if(crearplatoActualizada.getNombre()!= null)
-            {
-                crearplatoExistente.setNombre(crearplatoActualizada.getNombre());
-            }
+
+            if(crearplatoActualizada.getNombre()!= null)crearplatoExistente.setNombre(crearplatoActualizada.getNombre());
+            if(crearplatoActualizada.getDescripcion()!= null)crearplatoExistente.setDescripcion(crearplatoActualizada.getDescripcion());
+            if(crearplatoActualizada.getPrecio()!= null)crearplatoExistente.setPrecio(crearplatoActualizada.getPrecio());
+
+
 
             Crearplato crearplatoGuardada = save(crearplatoExistente);
             return ResponseEntity.ok(crearplatoGuardada);

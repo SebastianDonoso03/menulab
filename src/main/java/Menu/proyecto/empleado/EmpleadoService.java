@@ -43,10 +43,10 @@ public class EmpleadoService
                 return ResponseEntity.notFound().build();
             }
 
-            if(empleadoActualizada.getNombrecompleto()!= null)
-            {
-                empleadoExistente.setNombrecompleto(empleadoActualizada.getNombrecompleto());
-            }
+            if(empleadoActualizada.getNombrecompleto()!= null)empleadoExistente.setNombrecompleto(empleadoActualizada.getNombrecompleto());
+            if(empleadoActualizada.getContraseña()!= null)empleadoExistente.setContraseña(empleadoActualizada.getContraseña());
+            if(empleadoActualizada.getUsuario()!=null)empleadoExistente.setUsuario(empleadoActualizada.getUsuario());
+            if(empleadoActualizada.getCorreoelectronico()!= null)empleadoExistente.setCorreoelectronico(empleadoActualizada.getCorreoelectronico());
 
             Empleado empleadoGuardada = save(empleadoExistente);
             return ResponseEntity.ok(empleadoGuardada);

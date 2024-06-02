@@ -3,6 +3,7 @@ package Menu.proyecto.cliente;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,11 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
+
 @RestController
-@RequestMapping(value = "api/")
+@RequestMapping
 public class ClienteController 
 {
-     @Autowired
+    @Autowired
     private ClienteService clienteService;
 
     @PostMapping(value = "cliente")
@@ -26,20 +28,20 @@ public class ClienteController
         return clienteService.save(entity);
     }
     
-    @GetMapping(value = "cliente{id}")
+    @GetMapping(value = "cliente/{id}")
     public Cliente findById(@PathVariable Long id) 
     {
         return clienteService.findById(id);
     }
 
-     @PutMapping(value = "cliente")
+    @PutMapping(value = "cliente")
     public Cliente update(@RequestBody Cliente entity)
     {
         return clienteService.save(entity);
     }
 
     //Delete
-    @DeleteMapping(value = "cliente")
+    @DeleteMapping(value = "cliente/{id}")
     public void delete(@PathVariable Long id)
     {
         clienteService.deleteById(id);
@@ -50,5 +52,11 @@ public class ClienteController
     public List<Cliente> findAll()
     {
         return clienteService.findAll();
+    }
+
+    @PutMapping(value = "cliente/{id}")
+    public ResponseEntity<Cliente> updateById(@PathVariable Long id, @RequestBody Cliente entity)
+    {
+        return clienteService.updateById(id, entity);
     }
 }

@@ -11,7 +11,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Cliente 
 {
-     @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String nombre;

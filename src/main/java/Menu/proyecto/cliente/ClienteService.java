@@ -39,15 +39,9 @@ public class ClienteService
         {
             Cliente clienteExistente = findById(id);
 
-            if (clienteExistente == null)
-            {
-                return ResponseEntity.notFound().build();
-            }
+            if (clienteExistente == null)return ResponseEntity.notFound().build();
+            if(clienteActualizada.getNombre()!= null)clienteExistente.setNombre(clienteActualizada.getNombre());
 
-            if(clienteActualizada.getNombre()!= null)
-            {
-                clienteExistente.setNombre(clienteActualizada.getNombre());
-            }
 
             Cliente clienteGuardada = save(clienteExistente);
             return ResponseEntity.ok(clienteGuardada);

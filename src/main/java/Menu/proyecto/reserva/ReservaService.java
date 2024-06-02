@@ -43,10 +43,11 @@ public class ReservaService
                 return ResponseEntity.notFound().build();
             }
 
-            if(reservaActualizada.getDescripcion()!= null)
-            {
-                reservaExistente.setDescripcion(reservaActualizada.getDescripcion());
-            }
+            if(reservaActualizada.getDescripcion()!= null)reservaExistente.setDescripcion(reservaActualizada.getDescripcion());
+            if(reservaActualizada.getFechaingreso()!= null)reservaActualizada.setFechaingreso(reservaActualizada.getFechaingreso());
+            if(reservaActualizada.getNumeropersonas()!= null)reservaActualizada.setNumeropersonas(reservaActualizada.getNumeropersonas());
+            if(reservaActualizada.getPrecio()!= null)reservaActualizada.setPrecio(reservaActualizada.getPrecio());
+
 
             Reserva reservaGuardada = save(reservaExistente);
             return ResponseEntity.ok(reservaGuardada);

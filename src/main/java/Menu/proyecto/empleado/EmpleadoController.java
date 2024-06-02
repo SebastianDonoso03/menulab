@@ -3,6 +3,7 @@ package Menu.proyecto.empleado;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "api/")
+@RequestMapping
 public class EmpleadoController 
 {
-     @Autowired
+    @Autowired
     private EmpleadoService empleadoService;
 
     @PostMapping(value = "empleado")
@@ -25,20 +26,20 @@ public class EmpleadoController
         return empleadoService.save(entity);
     }
     
-    @GetMapping(value = "empleado{id}")
+    @GetMapping(value = "empleado/{id}")
     public Empleado findById(@PathVariable Long id) 
     {
         return empleadoService.findById(id);
     }
 
-     @PutMapping(value = "empleado")
+    @PutMapping(value = "empleado")
     public Empleado update(@RequestBody Empleado entity)
     {
         return empleadoService.save(entity);
     }
 
     //Delete
-    @DeleteMapping(value = "empleado")
+    @DeleteMapping(value = "empleado/{id}")
     public void delete(@PathVariable Long id)
     {
         empleadoService.deleteById(id);
@@ -49,5 +50,11 @@ public class EmpleadoController
     public List<Empleado> findAll()
     {
         return empleadoService.findAll();
+    }
+
+    @PutMapping(value = "empleado/{id}")
+    public ResponseEntity<Empleado> updateById(@PathVariable Long id, @RequestBody Empleado entity)
+    {
+        return empleadoService.updateById(id, entity);
     }
 }

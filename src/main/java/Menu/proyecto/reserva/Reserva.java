@@ -24,16 +24,6 @@ public class Reserva
     private BigDecimal numeropersonas;
     private String descripcion;
 
-    public BigDecimal getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(BigDecimal precio) {
-        this.precio = precio;   
-    }
-
-
-
     public long getId() {
         return id;
     }
@@ -50,7 +40,15 @@ public class Reserva
         this.fechaingreso = fechaingreso;
     }
 
-    public Number getNumeropersonas() {
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
+    }
+
+    public BigDecimal getNumeropersonas() {
         return numeropersonas;
     }
 
@@ -66,6 +64,21 @@ public class Reserva
         this.descripcion = descripcion;
     }
 
+    public Restaurante getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(Restaurante restaurante) {
+        this.restaurante = restaurante;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
     @ManyToOne 
     private Restaurante restaurante;

@@ -12,8 +12,8 @@ public class Restaurante
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-     private long idrestaurante;
-     private String nombrerestaurante; 
+        private long idrestaurante;
+        private String nombrerestaurante; 
 
     public long getIdrestaurante() {
         return idrestaurante;

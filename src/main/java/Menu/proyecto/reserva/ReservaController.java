@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
-@RequestMapping(value = "api/")
+@RequestMapping
 public class ReservaController 
 {
     @Autowired
@@ -28,20 +29,20 @@ public class ReservaController
         return reservaService.save(entity);
     }
     
-    @GetMapping(value = "reserva{id}")
+    @GetMapping(value = "reserva/{id}")
     public Reserva findById(@PathVariable Long id) 
     {
         return reservaService.findById(id);
     }
 
-     @PutMapping(value = "reserva")
+    @PutMapping(value = "reserva")
     public Reserva update(@RequestBody Reserva entity)
     {
         return reservaService.save(entity);
     }
 
     //Delete
-    @DeleteMapping(value = "reserva")
+    @DeleteMapping(value = "reserva/{id}")
     public void delete(@PathVariable Long id)
     {
         reservaService.deleteById(id);
@@ -54,5 +55,9 @@ public class ReservaController
         return reservaService.findAll();
     }
 
-    
+    @PutMapping(value = "reserva/{id}")
+    public ResponseEntity<Reserva> updateById(@PathVariable Long id, @RequestBody Reserva entity)
+    {
+        return reservaService.updateById(id, entity);
+    }
 }

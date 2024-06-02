@@ -43,10 +43,8 @@ public class RestauranteService
                 return ResponseEntity.notFound().build();
             }
 
-            if(restauranteActualizada.getNombrerestaurante()!= null)
-            {
-                restauranteExistente.setNombrerestaurante(restauranteActualizada.getNombrerestaurante());
-            }
+            if(restauranteActualizada.getNombrerestaurante()!= null)restauranteExistente.setNombrerestaurante(restauranteActualizada.getNombrerestaurante());
+
 
             Restaurante restauranteGuardada = save(restauranteExistente);
             return ResponseEntity.ok(restauranteGuardada);
